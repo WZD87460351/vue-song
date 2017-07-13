@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>vue</title>
+	<link rel="stylesheet" href="css/index.css">
+	<script src="js/jquery-1.11.3.js"></script>
+	<script src="js/vue.js"></script>
+	<script src="js/vue-resource@1.3.4"></script>
+	<script src="js/index.js"></script>
+</head>
+<body>
+	<div id="app">
+		<input type="text" v-model="inp">
+		<input type="button" value="submit" @click="getsong">
+		<hr>
+		<div v-if="lyric">
+			{{afterlyric}}
+		</div>
+		<br><br><br>
+		<div v-if="songsource">
+			
+			<audio :src="songsource" controls autoplay muted ref="Video"></audio>
+		</div>
+		
+		
+		<ul v-if="song">
+			<li v-for="item in song.songs">
+				<img :src="item.al.picUrl" alt="" @click="broadsong(item.id)">
+				<p class="name">{{item.dt}}</p>
+				<p class="broadcast">{{item.name}}</p>
+			</li>
+		</ul>
+		
+	</div>
+	
+</body>
+</html>
